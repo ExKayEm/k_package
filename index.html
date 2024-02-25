@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Content</title>
+</head>
+<body>
+    <p id="user_id"></p>
+    <p id="test"></p>
+</body>
+</html><script>// Function to generate a random number between min and max (inclusive)
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Function to generate a random letter from the alphabet
+    function getRandomLetter() {
+        var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var randomIndex = Math.floor(Math.random() * alphabet.length);
+        return alphabet.charAt(randomIndex);
+    }
+
+    // Function to generate random text in the format XXX-ABC-XXX
+    function generateRandomText() {
+        var randomText = '';
+        // Generate first three random numbers
+        for (var i = 0; i < 3; i++) {
+            randomText += getRandomNumber(0, 9);
+        }
+        randomText += '-';
+        // Generate three random letters
+        for (var j = 0; j < 3; j++) {
+            randomText += getRandomLetter();
+        }
+        randomText += '-';
+        // Generate last three random numbers
+        for (var k = 0; k < 3; k++) {
+            randomText += getRandomNumber(0, 9);
+        }
+        return randomText;
+    }
+    
+    function generateRandomText2() {
+        var randomText2 = '';
+        // Generate first three random numbers
+        for (var i = 0; i < 3; i++) {
+            randomText2 += getRandomNumber(0, 9);
+        }
+        randomText2 += '-';
+        // Generate three random letters
+        for (var j = 0; j < 3; j++) {
+            randomText2 += getRandomLetter();
+        }
+        randomText2 += '-';
+        // Generate last three random numbers
+        for (var k = 0; k < 3; k++) {
+            randomText2 += getRandomNumber(0, 9);
+        }
+        return randomText2;
+    }
+    
+    // Function to update the paragraph content
+    function updateContent() {
+        // Get the paragraph element by its ID
+        var paragraph = document.getElementById("user_id");
+        var test = document.getElementById("test");
+        // Generate random text in the desired format
+        var randomText = generateRandomText();
+        var randomText2 = generateRandomText2();
+        // Update the paragraph content
+        paragraph.textContent = randomText;
+        test.textContent = randomText2;
+    }
+    
+    // Update content initially
+    updateContent();
+
+    // Update content every 10 seconds
+    setInterval(updateContent, 10 * 1000); // 10 minutes in milliseconds</script>
